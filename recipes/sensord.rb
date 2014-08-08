@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: canary
-# Recipe:: default
+# Recipe:: sensord
 #
 # Copyright (C) 2014 Jeremy Olliver
 #
@@ -17,5 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe 'canary::sensord'
-include_recipe 'canary::canaryd'
+ark 'sensord' do
+  url      node['canary']['sensord']['url']
+  # checksum node['canary']['sensord']['checksum']
+  # optional
+  version(node['canary']['sensord']['version']) if node['canary']['sensord']['version']
+end
