@@ -39,4 +39,5 @@ Include `canary` in your node's `run_list`:
 
 ## License and Authors
 
-Author:: apachev2 (<jeremy.olliver@gmail.com>)
+Author:: Jeremy Olliver (<jeremy.olliver@gmail.com>)
+License:: apachev2
