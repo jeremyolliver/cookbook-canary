@@ -1,6 +1,6 @@
-# canary-cookbook
+# cookbook-canary
 
-This cookbook installs canaryd and sensord from source
+This cookbook installs canaryd and sensord from source. This cookbook is still a work in progress. Contributions, forks and re-use welcome.
 
 ## Supported Platforms
 
@@ -34,6 +34,11 @@ Installs build-essentials, libcurl, go and compiles `sensord`
 
 * Service definitions for canaryd and sensord
 * Install via pre-compiled binaries
+* tests
+
+## Testing
+
+kitchen definitions are setup to run the cookbook locally via `test-kitchen` and `vagrant`. This allows verification that the cookbook compiles and runs on desired platforms, though no automated tests exist at present
 
 ## License and Authors
 
