@@ -1,31 +1,16 @@
 # canary-cookbook
 
-TODO: Enter the cookbook description here.
+This cookbook installs canaryd and sensord from source
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['canary']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+debian family, and rhel family
 
 ## Usage
 
 ### canary::default
+
+This is the full install option. This recipe installs go, godeps, and the components of canary (candaryd and sensord) from source and compiles them. It also installs redis from source and enables it as a service via the `redisio` cookbook.
 
 Include `canary` in your node's `run_list`:
 
@@ -36,6 +21,19 @@ Include `canary` in your node's `run_list`:
   ]
 }
 ```
+
+### canary::canaryd
+
+Installs build-essentials, go, and compiles `canaryd`
+
+### canary::sensord
+
+Installs build-essentials, libcurl, go and compiles `sensord`
+
+## TODO
+
+* Service definitions for canaryd and sensord
+* Install via pre-compiled binaries
 
 ## License and Authors
 

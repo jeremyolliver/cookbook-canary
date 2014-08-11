@@ -17,9 +17,15 @@
 # limitations under the License.
 #
 
-ark 'canaryd' do
-  url      node['canary']['canaryd']['url']
-  # checksum node['canary']['canaryd']['checksum']
-  # optional
-  version(node['canary']['canaryd']['version']) if node['canary']['canaryd']['version']
+include_recipe 'build-essential'
+include_recipe 'golang::default'
+
+execute 'install-and-compile-canaryd' do
+  command ". /etc/profile.d/golang.sh && " + \
+          "go get github.com/canaryio/canaryd && " + \
+          "go get github.com/tools/godep && " + \
+          "cd $GOPATH/src/github.com/canaryio/canaryd && " + \
+          "godep get && " + \
+          "godep go build"
+  creates '/opt/go/bin/canaryd'
 end

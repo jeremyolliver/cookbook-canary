@@ -17,9 +17,19 @@
 # limitations under the License.
 #
 
-ark 'sensord' do
-  url      node['canary']['sensord']['url']
-  # checksum node['canary']['sensord']['checksum']
-  # optional
-  version(node['canary']['sensord']['version']) if node['canary']['sensord']['version']
+include_recipe 'build-essential'
+include_recipe 'golang::default'
+
+node['canary']['libcurl_packages'].each do |package_name|
+  package package_name
+end
+
+execute 'install-and-compile-sensord' do
+  command ". /etc/profile.d/golang.sh && " + \
+          "go get github.com/canaryio/sensord && " + \
+          "go get github.com/tools/godep && " + \
+          "cd $GOPATH/src/github.com/canaryio/sensord && " + \
+          "godep get && " + \
+          "godep go build"
+  creates '/opt/go/bin/sensord'
 end

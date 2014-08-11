@@ -19,3 +19,6 @@
 
 include_recipe 'canary::sensord'
 include_recipe 'canary::canaryd'
+
+include_recipe 'redisio::install'
+include_recipe 'redisio::enable'

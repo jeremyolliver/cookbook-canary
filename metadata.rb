@@ -6,4 +6,6 @@ description      'Installs/Configures canary'
 long_description 'Installs/Configures canary'
 version          '0.1.0'
 
-depends 'ark'
+depends 'golang'
+depends 'build-essential'
+depends 'redisio'
